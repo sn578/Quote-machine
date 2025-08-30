@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>InspiroQuote — Quote Machine</title>
+  <meta name="description" content="Animated quote machine with non-repeating shuffle, copy/tweet, keyboard shortcuts, and local persistence." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <noscript>
+    <style>
+      .controls,.meta { display:none !important; }
+      .card { opacity:1 !important; transform:none !important; }
+    </style>
+  </noscript>
+</head>
+<body>
+  <!-- ✨ Animated background layers -->
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <div class="bg-orbs" aria-hidden="true">
+    <span class="orb o1"></span>
+    <span class="orb o2"></span>
+    <span class="orb o3"></span>
+  </div>
+
+  <main class="shell" role="main">
+    <header class="topbar">
+      <h1 class="app-title" aria-label="InspiroQuote">Inspiro<span>Quote</span></h1>
+      <div class="toggles">
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme (T)">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path d="M12 3a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm8-4a1 1 0 0 1 1 1 9 9 0 1 1-9-9 1 1 0 1 1 0 2 7 7 0 1 0 7 7ZM4 11a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2h1Zm18 0a1 1 0 0 1 0 2h-1a1 1 0 1 1 0-2h1ZM6.22 5.22a1 1 0 0 1 1.42 0l.7.7a1 1 0 1 1-1.42 1.42l-.7-.7a1 1 0 0 1 0-1.42Zm11.44 11.44a1 1 0 0 1 1.42 0l.7.7a1 1 0 1 1-1.42 1.42l-.7-.7a1 1 0 0 1 0-1.42Z"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <section class="card" aria-live="polite" aria-atomic="true">
+      <blockquote id="quoteBox" class="quote">
+        <p id="quoteText">If JavaScript is off, you’ll still see this static quote. Keep going—you’re doing great!</p>
+        <footer id="quoteAuthor">— Someone Encouraging</footer>
+      </blockquote>
+
+      <div class="meta">
+        <label for="category" class="sr-only">Filter category</label>
+        <select id="category" aria-label="Filter quotes by category">
+          <option value="all">All categories</option>
+          <option value="inspirational">Inspirational</option>
+          <option value="tech">Tech</option>
+          <option value="humor">Humor</option>
+        </select>
+        <span id="progress" aria-live="polite" title="Cycle progress">0/0</span>
+      </div>
+
+      <div class="controls" role="group" aria-label="Quote actions">
+        <button id="nextBtn" class="btn primary" aria-label="New Quote">New Quote</button>
+        <button id="copyBtn" class="btn ghost" aria-label="Copy to clipboard">Copy</button>
+        <button id="tweetBtn" class="btn ghost" aria-label="Tweet this quote">Tweet</button>
+      </div>
+
+      <p class="hint">
+        <kbd>Space</kbd> next • <kbd>C</kbd> copy • <kbd>T</kbd> theme
+      </p>
+    </section>
+
+    <footer class="foot">
+      <small>Built with ❤️ for practice. No frameworks. Accessible & responsive.</small>
+    </footer>
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
